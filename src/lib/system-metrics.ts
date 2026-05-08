@@ -131,8 +131,8 @@ export function getDiskUsage(): {
 }
 
 export function getNetworkStats(): {
-  down: number;
-  up: number;
+  netDown: number;
+  netUp: number;
 } {
   try {
     const net = execSync("cat /proc/net/dev", { encoding: "utf-8" });
@@ -173,9 +173,9 @@ export function getNetworkStats(): {
     }
 
     lastNetStats.total = { rx: totalRx, tx: totalTx };
-    return { down: netDown, up: netUp };
+    return { netDown, netUp };
   } catch {
-    return { down: 0, up: 0 };
+    return { netDown: 0, netUp: 0 };
   }
 }
 

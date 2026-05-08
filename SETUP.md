@@ -8,15 +8,12 @@
 # Update system packages
 sudo apt-get update && sudo apt-get upgrade -y
 
-# Install Node.js 20 (recommended)
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+# Install Node.js 22+ (recommended)
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
-# OR install Bun (lightweight, faster)
-curl -fsSL https://bun.sh/install | bash
-# Then add to PATH:
-export PATH=$HOME/.bun/bin:$PATH
-echo 'export PATH=$HOME/.bun/bin:$PATH' >> ~/.bashrc
+# Verify npm is available
+npm --version
 ```
 
 ### 2. Clone/Update the Repository
@@ -33,10 +30,6 @@ cd pi-power-panel && git pull
 ```bash
 cd /home/pasan/GitHub/pi-power-panel
 
-# Using Bun (recommended)
-bun install
-
-# OR using npm
 npm install
 ```
 
@@ -44,8 +37,6 @@ npm install
 
 ```bash
 # Run development server
-bun run dev
-# OR
 npm run dev
 
 # Visit: http://localhost:5173

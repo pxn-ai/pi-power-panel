@@ -180,11 +180,11 @@ function Dashboard() {
               </div>
               <div className="rounded-md border border-border bg-muted/40 p-2">
                 <p className="text-muted-foreground">Read</p>
-                <p className="tabular-nums text-foreground">{(20 + Math.random() * 80).toFixed(0)} MB/s</p>
+                <p className="tabular-nums text-foreground">{(current.netDown * 12.5).toFixed(0)} MB/s</p>
               </div>
               <div className="rounded-md border border-border bg-muted/40 p-2">
                 <p className="text-muted-foreground">Write</p>
-                <p className="tabular-nums text-foreground">{(5 + Math.random() * 40).toFixed(0)} MB/s</p>
+                <p className="tabular-nums text-foreground">{(current.netUp * 12.5).toFixed(0)} MB/s</p>
               </div>
             </div>
             <div className="mt-auto">

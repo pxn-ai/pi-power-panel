@@ -97,6 +97,12 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.process=window.process||{env:{}};window.process.env=window.process.env||{};window.process.env.TSS_ROUTER_BASEPATH=window.process.env.TSS_ROUTER_BASEPATH||'';",
+          }}
+        />
         <HeadContent />
       </head>
       <body>
