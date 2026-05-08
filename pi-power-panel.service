@@ -1,0 +1,21 @@
+[Unit]
+Description=Pi Power Panel Dashboard
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pasan
+WorkingDirectory=/home/pasan/GitHub/pi-power-panel
+ExecStart=/home/pasan/.bun/bin/bun run dev
+Restart=always
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=pi-power-panel
+Environment="NODE_ENV=production"
+Environment="HOST=0.0.0.0"
+Environment="PORT=5173"
+
+[Install]
+WantedBy=multi-user.target
