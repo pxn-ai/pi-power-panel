@@ -72,14 +72,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Raspberry Pi 5 Dashboard" },
+      { name: "description", content: "Live system monitoring for Raspberry Pi 5 — CPU, GPU, RAM, disk, fan and network." },
+      { name: "author", content: "Smart-Freaks" },
+      { property: "og:title", content: "Raspberry Pi 5 Dashboard" },
+      { property: "og:description", content: "Live system monitoring for Raspberry Pi 5." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -96,7 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head>
         <HeadContent />
       </head>
