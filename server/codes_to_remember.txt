@@ -1,0 +1,5 @@
+Stop the script: sudo systemctl stop pi-agent.service
+
+Restart the script: sudo systemctl restart pi-agent.service
+
+View the logs/output: journalctl -u pi-agent.service -f
