@@ -26,7 +26,6 @@ function clamp(v: number, min: number, max: number) {
   return Math.max(min, Math.min(max, v));
 }
 
-
 const defaultMetric: MetricSeries = {
   cpu: 0,
   cpuTemp: 0,
@@ -49,9 +48,14 @@ export function useMetrics(intervalMs: number, paused = false) {
 
   const fetchMetrics = async (): Promise<MetricSeries | null> => {
     try {
-      const response = await fetch("/api/metrics", {
+      // 1. Get the Pi's IP from Vite environment variables, or fallback to localhost for testing
+      const API_URL = import.meta.env.VITE_PI_API_URL || "http://192.168.1.100:3000/api/metrics";
+
+      // 2. Fetch from the absolute URL instead of the relative path
+      const response = await fetch(API_URL, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
+        // mode: 'cors' is automatically implied when fetching from a different IP
       });
 
       if (!response.ok) {
@@ -74,7 +78,7 @@ export function useMetrics(intervalMs: number, paused = false) {
       setUptime(Math.floor((Date.now() - startRef.current) / 1000));
     }, 1000);
     return () => clearInterval(t);
-  }, []);
+  },[]);
 
   useEffect(() => {
     let mounted = true;
@@ -91,7 +95,7 @@ export function useMetrics(intervalMs: number, paused = false) {
     return () => {
       mounted = false;
     };
-  }, []);
+  },[]);
 
   useEffect(() => {
     if (paused) return;
